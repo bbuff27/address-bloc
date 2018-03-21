@@ -53,7 +53,18 @@ class MenuController
     end
 
     def view_specific_entry
-        
+
+        print "Find entry number: "
+        selection = gets.chomp.to_i
+
+        if selection < address_book.entries.count
+            puts address_book.entries[selection]
+            gets.chomp
+            system "clear"
+        else
+            puts "#{selection} is not a valid input"
+            view_specific_entry
+        end 
     end
 
     def view_all_entries
