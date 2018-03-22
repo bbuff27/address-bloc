@@ -5,7 +5,6 @@ RSpec.describe AddressBook do
 	let(:book) {AddressBook.new}
 
 	describe "attributes" do
-		
 		it "responds to entries" do
 			expect(book).to respond_to(:entries)
 		end
@@ -20,7 +19,6 @@ RSpec.describe AddressBook do
 	end
 
 	describe "#add_entry" do
-
 		it "adds only one entry to the address book" do
 			book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
 			
@@ -38,7 +36,6 @@ RSpec.describe AddressBook do
 	end
 
 	describe "#remove_entry" do
-
 		it "removes only one entry from the address book" do
 			
 			book.add_entry("Ada Lovelace", "010.012.1815", "augusta.king@lovelace.com")
@@ -51,7 +48,14 @@ RSpec.describe AddressBook do
 
 			expect(book.entries.size).to eq(new_size)
 		end
-	
 	end
 
+	describe "#import_from_csv" do 
+		it "imports the correct number of entries" do
+			book.import_from_csv(entries.csv)
+			book_size = book.entries.size
+
+			expect(book_size).to eq(5)
+		end
+	end
 end
