@@ -56,4 +56,8 @@ class AddressBook
 
 		return nil
 	end
+
+	def iterative_search
+
+	end
 end
