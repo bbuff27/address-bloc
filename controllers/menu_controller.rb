@@ -10,7 +10,8 @@ class MenuController
   def main_menu
   
   puts "Main Menu - #{address_book.entries.count} entries"
-  puts "1 - View all entries"
+	puts "0 - DESTROY EVERYTHING"
+	puts "1 - View all entries"
   puts "2 - Create an entry"
   puts "3 - Search for an entry"
   puts "4 - Import entries from a CSV"
@@ -20,7 +21,11 @@ class MenuController
   selection = gets.to_i
   
   case selection
-when 1
+		when 0
+			system "clear"
+			delete_all_entries
+			main_menu
+		when 1
       system "clear"
       view_all_entries
       main_menu
@@ -44,7 +49,11 @@ when 1
       puts "Sorry, that's not a valid input"
       main_menu
     end
-  end
+	end
+	
+	def delete_all_entries
+		
+	end
 
   def view_all_entries
     
