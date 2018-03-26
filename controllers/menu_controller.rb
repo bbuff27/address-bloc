@@ -53,6 +53,24 @@ class MenuController
 	
 	def delete_all_entries
 		
+		puts "Are you sure you want to delete everything?"
+		puts "y - Yes"
+		puts "n - No"
+
+		selection = gets.chomp
+		case selection
+			when "y"
+				system "clear"
+				address_book.entries.clear
+				main_menu
+			when "n"
+				system "clear"
+				main_menu
+			else
+				system "clear"
+				puts "Sorry, that's not a valid input"
+				delete_all_entries
+		end
 	end
 
   def view_all_entries
