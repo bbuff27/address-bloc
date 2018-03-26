@@ -100,7 +100,16 @@ class MenuController
     end
 
     def search_entries
-    
+        print "Search by name: "
+        name = gets.chomp
+        match = address_book.binary_search(name)
+        system "clear"
+        if match
+            puts match.to_s
+            search_submenu(match)
+        else
+            puts "No match found for #{name}"
+        end
     end
 
     def read_csv
@@ -147,6 +156,32 @@ class MenuController
                 puts "#{selection} is not a valid input"
                 entry_submenu(entry)
         end
+    end
+
+    def search_submenu(entry)
+        puts "d - delete entry"
+        puts "e - edit entry"
+        puts "m - main menu"
+        selection = gets.chomp
+
+        case selection
+            when "d"
+                system "clear"
+                delete_entry(entry)
+                main_menu
+            when "e"
+                edit_entry(entry)
+                system "clear"
+                main_menu
+            when "m"
+                system "clear"
+                main_menu
+            else
+                system "clear"
+                puts "#{selection} is not a valid input"
+                puts entry.to_s
+                search_submenu(entry)
+            end
     end
 
 end
