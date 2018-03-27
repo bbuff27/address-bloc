@@ -57,8 +57,8 @@ class MenuController
         print "Find entry number: "
         selection = gets.chomp.to_i
 
-        if selection < address_book.entries.count
-            puts address_book.entries[selection]
+        if selection <= address_book.entries.length && selection > 0
+            puts address_book.entries[selection - 1]
             gets.chomp
             system "clear"
         else
